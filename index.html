@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="font-family: 'Oswald', sans-serif; font-weight: bold;">SPRING WELLNESS CHALLENGE 2024</title>
+    <style>
+        /* Add your custom styles here */
+       body {
+            background-color: black;
+            color: #f8c01b;
+            font-family: 'PT Sans Narrow', sans-serif;
+			color: #f8c01b;
+         #challengeDate {
+            margin-bottom: 20px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 style="font-family: 'Oswald', sans-serif; font-weight: bold;">SPRING FITNESS CHALLENGE 2024</h1>
+    <p>TODAY I DID...</p>
+    <input type="date" id="challengeDate" value="" readonly>
+    <br>
+    <label><input type="checkbox" class="activity" value="30_MIN_WORKOUT">30 MINUTE WORKOUT</label><br>
+    <label><input type="checkbox" class="activity" value="10K_STEPS">10K STEPS</label><br>
+    <label><input type="checkbox" class="activity" value="TRACKED_FOOD">TRACKED MY FOOD</label><br>
+    <label><input type="checkbox" class="activity" value="DRANK_WATER">DRANK WATER</label><br>
+    <label><input type="checkbox" class="activity" value="READ_SELF_HELP_BOOK">READ 10 PAGES OF A SELF HELP BOOK</label><br>
+    <label><input type="checkbox" class="activity" value="7_HOURS_SLEEP">7 HOURS OF SLEEP</label><br>
+    <label><input type="checkbox" class="activity" value="WEEKLY_BUDGET">STUCK TO A WEEKLY SET BUDGET</label><br>
+    <p>TODAY I EARNED <span id="totalPoints">0</span> POINTS.</p>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.activity');
+        const totalPointsDisplay = document.getElementById('totalPoints');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateTotalPoints);
+        });
+
+        function updateTotalPoints() {
+            let totalPoints = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalPoints++;
+                }
+            });
+            totalPointsDisplay.textContent = totalPoints;
+        }
+
+        // Set the date picker to today's date
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        document.getElementById('challengeDate').value = formattedDate;
+    </script>
+</body>
+</html>
